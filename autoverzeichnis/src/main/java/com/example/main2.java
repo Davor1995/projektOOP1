@@ -6,16 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.net.URL;
-
 public class main2 extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        URL fxmlLocation = getClass().getResource("/com/example/sample.fxml");
-        System.out.println("FXML Location: " + fxmlLocation);
-        Parent root = FXMLLoader.load(fxmlLocation);
-        primaryStage.setTitle("Hello World");
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("/com/example/sample.fxml"));
+        primaryStage.setTitle("Fahrzeugliste");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
