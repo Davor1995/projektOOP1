@@ -5,42 +5,48 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class vehicleEditController {
-    @FXML
-    private TextField brandField;
-    @FXML
-    private TextField modelField;
-    @FXML
-    private TextField yearField;
-    @FXML
-    private TextField mileageField;
-    @FXML
-    private TextField purchasePriceField;
-    @FXML
-    private TextField sellingPriceField;
 
+    @FXML
+    private TextField herstellerField;
+
+    @FXML
+    private TextField modellField;
+
+    @FXML
+    private TextField leistungField;
+
+    private Stage dialogStage;
     private Vehicle vehicle;
+    private boolean okClicked = false;
 
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
+    }
+    // Bearbeitung des Fahrzeuges
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
 
-        brandField.setText(vehicle.getBrand());
-        modelField.setText(vehicle.getModel());
-        yearField.setText(Integer.toString(vehicle.getYear()));
-        mileageField.setText(Integer.toString(vehicle.getMileage()));
-        purchasePriceField.setText(Double.toString(vehicle.getPurchasePrice()));
-        sellingPriceField.setText(Double.toString(vehicle.getSellingPrice()));
+        herstellerField.setText(vehicle.getHersteller());
+        modellField.setText(vehicle.getModell());
+        leistungField.setText(Integer.toString(vehicle.getLeistung()));
+    }
+
+    public boolean isOkClicked() {
+        return okClicked;
     }
 
     @FXML
-    private void handleSave() {
-        vehicle.setBrand(brandField.getText());
-        vehicle.setModel(modelField.getText());
-        vehicle.setYear(Integer.parseInt(yearField.getText()));
-        vehicle.setMileage(Integer.parseInt(mileageField.getText()));
-        vehicle.setPurchasePrice(Double.parseDouble(purchasePriceField.getText()));
-        vehicle.setSellingPrice(Double.parseDouble(sellingPriceField.getText()));
+    private void handleOk() {
+        vehicle.setHersteller(herstellerField.getText());
+        vehicle.setModell(modellField.getText());
+        vehicle.setLeistung(Integer.parseInt(leistungField.getText()));
 
-        Stage stage = (Stage) brandField.getScene().getWindow();
-        stage.close();
+        okClicked = true;
+        dialogStage.close();
+    }
+
+    @FXML
+    private void handleCancel() {
+        dialogStage.close();
     }
 }

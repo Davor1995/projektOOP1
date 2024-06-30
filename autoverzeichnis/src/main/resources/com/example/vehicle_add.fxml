@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vehicleAddController">
-    <TextField fx:id="brandField" layoutX="14.0" layoutY="14.0" promptText="Marke" />
-    <TextField fx:id="modelField" layoutX="14.0" layoutY="54.0" promptText="Modell" />
-    <TextField fx:id="yearField" layoutX="14.0" layoutY="94.0" promptText="Jahrgang" />
-    <TextField fx:id="mileageField" layoutX="14.0" layoutY="134.0" promptText="Kilometerstand" />
-    <TextField fx:id="purchasePriceField" layoutX="14.0" layoutY="174.0" promptText="Einkaufspreis" />
-    <TextField fx:id="sellingPriceField" layoutX="14.0" layoutY="214.0" promptText="Verkaufspreis" />
-    <Button layoutX="14.0" layoutY="254.0" text="Hinzufügen" onAction="#handleAdd" />
-</AnchorPane>
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vehicleAddController">
+    <children>
+        <Label text="Hersteller"/>
+        <TextField fx:id="herstellerField"/>
+        <Label text="Modell"/>
+        <TextField fx:id="modellField"/>
+        <Label text="Leistung"/>
+        <TextField fx:id="leistungField"/>
+        <HBox spacing="10">
+            <Button text="Ok" onAction="#handleOk"/>
+            <Button text="Abbrechen" onAction="#handleCancel"/>
+        </HBox>
+    </children>
+</VBox>

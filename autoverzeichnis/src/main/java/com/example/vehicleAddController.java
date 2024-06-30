@@ -1,44 +1,52 @@
 package com.example;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class vehicleAddController {
-    @FXML
-    private TextField brandField;
-    @FXML
-    private TextField modelField;
-    @FXML
-    private TextField yearField;
-    @FXML
-    private TextField mileageField;
-    @FXML
-    private TextField purchasePriceField;
-    @FXML
-    private TextField sellingPriceField;
 
-    private ObservableList<Vehicle> vehicleList;
+    @FXML
+    private TextField herstellerField;
 
-    public void setVehicleList(ObservableList<Vehicle> vehicleList) {
-        this.vehicleList = vehicleList;
+    @FXML
+    private TextField modellField;
+
+    @FXML
+    private TextField leistungField;
+
+    private Stage dialogStage;
+    private Vehicle vehicle;
+    private boolean okClicked = false;
+
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
+    }
+    // Erstellung des Fahrzeugs
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+
+        herstellerField.setText(vehicle.getHersteller());
+        modellField.setText(vehicle.getModell());
+        leistungField.setText(Integer.toString(vehicle.getLeistung()));
+    }
+
+    public boolean isOkClicked() {
+        return okClicked;
     }
 
     @FXML
-    private void handleAdd() {
-        Vehicle newVehicle = new Vehicle(
-                brandField.getText(),
-                modelField.getText(),
-                Integer.parseInt(yearField.getText()),
-                Integer.parseInt(mileageField.getText()),
-                Double.parseDouble(purchasePriceField.getText()),
-                Double.parseDouble(sellingPriceField.getText())
-        );
+    private void handleOk() {
+        vehicle.setHersteller(herstellerField.getText());
+        vehicle.setModell(modellField.getText());
+        vehicle.setLeistung(Integer.parseInt(leistungField.getText()));
 
-        vehicleList.add(newVehicle);
+        okClicked = true;
+        dialogStage.close();
+    }
 
-        Stage stage = (Stage) brandField.getScene().getWindow();
-        stage.close();
+    @FXML
+    private void handleCancel() {
+        dialogStage.close();
     }
 }

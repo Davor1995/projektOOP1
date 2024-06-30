@@ -1,69 +1,52 @@
 package com.example;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Vehicle {
-    private String brand;
-    private String model;
-    private int year;
-    private int mileage;
-    private double purchasePrice;
-    private double sellingPrice;
-
-    public Vehicle(String brand, String model, int year, int mileage, double purchasePrice, double sellingPrice) {
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
-        this.mileage = mileage;
-        this.purchasePrice = purchasePrice;
-        this.sellingPrice = sellingPrice;
+    private final SimpleStringProperty hersteller;
+    private final SimpleStringProperty modell;
+    private final SimpleIntegerProperty leistung;
+    
+    public Vehicle(String hersteller, String modell, int leistung) {
+        this.hersteller = new SimpleStringProperty(hersteller);
+        this.modell = new SimpleStringProperty(modell);
+        this.leistung = new SimpleIntegerProperty(leistung);
     }
 
-    // Getter und Setter Methoden
-
-    public String getBrand() {
-        return brand;
+    public String getHersteller() {
+        return hersteller.get();
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setHersteller(String hersteller) {
+        this.hersteller.set(hersteller);
     }
 
-    public String getModel() {
-        return model;
+    public SimpleStringProperty herstellerProperty() {
+        return hersteller;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public String getModell() {
+        return modell.get();
     }
 
-    public int getYear() {
-        return year;
+    public void setModell(String modell) {
+        this.modell.set(modell);
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public SimpleStringProperty modellProperty(){
+        return modell;
     }
 
-    public int getMileage() {
-        return mileage;
+    public int getLeistung() {
+        return leistung.get();
     }
 
-    public void setMileage(int mileage) {
-        this.mileage = mileage;
+    public void setLeistung(int leistung) {
+        this.leistung.set(leistung);
     }
 
-    public double getPurchasePrice() {
-        return purchasePrice;
-    }
-
-    public void setPurchasePrice(double purchasePrice) {
-        this.purchasePrice = purchasePrice;
-    }
-
-    public double getSellingPrice() {
-        return sellingPrice;
-    }
-
-    public void setSellingPrice(double sellingPrice) {
-        this.sellingPrice = sellingPrice;
+    public SimpleIntegerProperty leistungProperty(){
+        return leistung;
     }
 }
